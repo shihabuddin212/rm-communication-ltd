@@ -59,6 +59,16 @@ export interface MessageItem {
     notes?: string;
 }
 
+export interface TestimonialItem {
+    id: string;
+    name: string;
+    role: string;
+    rating: number;
+    text: string;
+    initials?: string;
+    color?: string;
+}
+
 // Icon Helper Component
 export function renderIcon(iconName: string, props: any = {}) {
     const IconComponent = (Icons as any)[iconName];
@@ -396,6 +406,63 @@ const defaultMessages: MessageItem[] = [
     }
 ];
 
+const defaultTestimonials: TestimonialItem[] = [
+    {
+        id: 't-1',
+        name: 'Rafiqul Islam',
+        role: 'Home User, Mirpur',
+        rating: 5,
+        text: 'Rm Communication has been a game-changer for my household. The speed is consistently fast and the connection never drops. Excellent service!',
+        initials: 'RI',
+        color: '#00c6ff',
+    },
+    {
+        id: 't-2',
+        name: 'Tahmina Begum',
+        role: 'Business Owner, Dhanmondi',
+        rating: 5,
+        text: 'I rely on stable internet for my business. Rm Communication\'s corporate package has been flawless. Their 24/7 support team is incredibly responsive.',
+        initials: 'TB',
+        color: '#7c3aed',
+    },
+    {
+        id: 't-3',
+        name: 'Md. Karim',
+        role: 'Software Developer, Uttara',
+        rating: 5,
+        text: 'As a developer, low latency is critical. The 100 Mbps plan gives me blazing speeds with minimal ping. Best ISP I\'ve ever used in Dhaka.',
+        initials: 'MK',
+        color: '#f59e0b',
+    },
+    {
+        id: 't-4',
+        name: 'Fatema Khatun',
+        role: 'Student, Badda',
+        rating: 5,
+        text: 'Very affordable pricing with great speeds. The online bill payment is super easy. I highly recommend Rm Communication to everyone!',
+        initials: 'FK',
+        color: '#4ade80',
+    },
+    {
+        id: 't-5',
+        name: 'Shahidul Hoque',
+        role: 'Gaming Enthusiast, Gulshan',
+        rating: 5,
+        text: 'Finally found an ISP with consistent low latency for gaming! The fiber connection is rock-solid. The support team helped set everything up quickly.',
+        initials: 'SH',
+        color: '#f43f5e',
+    },
+    {
+        id: 't-6',
+        name: 'Nasrin Akter',
+        role: 'Home User, Mohammadpur',
+        rating: 5,
+        text: 'Great value for money. My whole family streams videos and works from home simultaneously with zero issues. Very happy customer!',
+        initials: 'NA',
+        color: '#a78bfa',
+    },
+];
+
 // Helper functions for Database operations
 function getStored<T>(key: string, defaultValue: T): T {
     const stored = localStorage.getItem(key);
@@ -422,8 +489,6 @@ export const db = {
 
     getOffers: () => {
         const stored = getStored<OfferItem[]>('rm_offers', defaultOffers);
-        // Always sync the refer-and-win offer with the latest defaultOffers data
-        // so stale cached versions (e.g. with old company name) are replaced.
         const latestRefer = defaultOffers.find((o) => o.id === 'refer-and-win');
         if (latestRefer) {
             const idx = stored.findIndex((o) => o.id === 'refer-and-win');
@@ -432,7 +497,6 @@ export const db = {
                 setStored<OfferItem[]>('rm_offers', updated);
                 return updated;
             } else {
-                // Overwrite stale cached entry with fresh defaults
                 const updated = [...stored];
                 updated[idx] = latestRefer;
                 setStored<OfferItem[]>('rm_offers', updated);
@@ -454,4 +518,7 @@ export const db = {
 
     getMessages: () => getStored<MessageItem[]>('rm_messages', defaultMessages),
     saveMessages: (data: MessageItem[]) => setStored<MessageItem[]>('rm_messages', data),
+
+    getTestimonials: () => getStored<TestimonialItem[]>('rm_testimonials', defaultTestimonials),
+    saveTestimonials: (data: TestimonialItem[]) => setStored<TestimonialItem[]>('rm_testimonials', data),
 };

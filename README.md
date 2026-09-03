@@ -1,32 +1,72 @@
-# React + TypeScript + Vite
+# RM Communication Ltd - Broadband & Telecom Web Portal
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A modern, responsive web application for **RM Communication Ltd** built with React, TypeScript, and Vite.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🌐 Production & Live Server Details
 
-## React Compiler
+- **Live Production Website**: [https://www.rmcommunicationltd.com](https://www.rmcommunicationltd.com)
+- **Live Admin Login Portal**: [https://www.rmcommunicationltd.com/admin](https://www.rmcommunicationltd.com/admin)
+- **GitHub Repository**: [https://github.com/shihabuddin212/rm-communication-ltd](https://github.com/shihabuddin212/rm-communication-ltd)
+- **Ubuntu VPS Server**: `msonline@103.60.205.230`
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the Oxlint configuration
+## 🔐 Admin Panel Credentials
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+- **Username / Email**: `admin@rmcommunication.com`
+- **Password**: `rm@admin2026`
+- **Localhost Route**: `/admin` (e.g. `http://localhost:5173/admin`)
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+---
+
+## 🚀 Local Development Setup
+
+### 1. Install Dependencies
+```bash
+npm install
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+### 2. Start Development Server
+```bash
+npm run dev
+```
+
+### 3. Build for Production
+```bash
+npm run build
+```
+
+---
+
+## 💻 Quick Deployment Guide (Ubuntu VPS: msonline@103.60.205.230)
+
+1. **SSH into Ubuntu Server**:
+   ```bash
+   ssh msonline@103.60.205.230
+   ```
+2. **Navigate to App Directory & Pull Latest Code**:
+   ```bash
+   cd /var/www/rm-comm
+   git pull origin main
+   ```
+3. **Install & Rebuild Production Bundle**:
+   ```bash
+   npm install
+   npm run build
+   ```
+4. **Reload Nginx**:
+   ```bash
+   sudo systemctl reload nginx
+   ```
+
+---
+
+## ✨ Core Features Included
+- **Dynamic Package Ordering**: Clicking "Get [Package Name]" on Home page or Pricing page redirects directly to Contact Page (`/contact`), auto-selects **New Connection**, and prefills the message box with: `Hello, I would like to subscribe to the "[Package Name]" package. Please get back to me.`
+- **Services & Solutions Inquiry**: Clicking arrow on any Service card redirects to `/contact`, selects **Service & Solutions** subject, and submits seamlessly to Admin.
+- **Dynamic Customer Testimonials (What Our Customers Say)**: Real-time CRUD management in Admin Panel with live UI updates.
+- **Interactive Live Speedometer**: Dual Download/Upload motion gauge with toggling zero states.
+- **Referral Offer Popup Banner**: Site visit modal featuring `RMC_Prize.jpg`, referral offer details, and Google Form sign-up link.
+- **Support & Newsletter Messages System**: Full CRUD management in Admin Panel for support inquiries and newsletter subscribers.

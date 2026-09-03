@@ -3,6 +3,9 @@ import { Wifi, ExternalLink, Play, Mail, Phone, MapPin, Send } from 'lucide-reac
 import { useState } from 'react';
 import './Footer.css';
 
+import { db } from '../../utils/db';
+import type { MessageItem } from '../../utils/db';
+
 interface FooterLink {
   label: string;
   path: string;
@@ -18,7 +21,7 @@ const footerLinks: Record<string, FooterLink[]> = {
   ],
   support: [
     { label: 'How to Pay', path: '/pay-bill' },
-    { label: 'Self-care Portal', path: 'https://selfcare.rmcommunication.com', external: true },
+    { label: 'Self-care Portal', path: '/contact#contact-form' },
     { label: 'Articles', path: '/articles' },
     { label: 'Contact Us', path: '/contact' },
   ],
@@ -41,7 +44,19 @@ export default function Footer() {
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
+    if (email.trim()) {
+      const newMsg: MessageItem = {
+        id: `msg-${Date.now()}`,
+        name: 'Newsletter Subscriber',
+        email: email.trim(),
+        phone: '—',
+        subject: 'newsletter',
+        message: `User requested newsletter subscription for: ${email.trim()}`,
+        date: new Date().toISOString().replace('T', ' ').substring(0, 16),
+        status: 'unread'
+      };
+      const stored = db.getMessages();
+      db.saveMessages([newMsg, ...stored]);
       setSubStatus('done');
       setEmail('');
       setTimeout(() => setSubStatus('idle'), 3000);
@@ -80,7 +95,7 @@ export default function Footer() {
               </a>
               <div className="footer__contact-item">
                 <MapPin size={13} style={{ flexShrink: 0 }} />
-                <span>89, 3 Water Works Rd, Lalbagh, Dhaka 1211</span>
+                <span>89/3 Water Works Road, Posta area of Lalbagh, Chawkbazar, Dhaka 1211</span>
               </div>
             </div>
             <div className="footer__socials">
@@ -166,7 +181,7 @@ export default function Footer() {
       <div className="footer__bottom">
         <div className="container footer__bottom-inner">
           <p>© Rm Communication Ltd {new Date().getFullYear()}. All rights reserved.</p>
-          <p>Developed with ❤️ for a better Bangladesh</p>
+          <p>Developed by Ms Online Software Team</p>
         </div>
       </div>
     </footer>

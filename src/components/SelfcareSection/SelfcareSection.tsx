@@ -95,7 +95,7 @@ export default function SelfcareSection() {
               ))}
             </ul>
 
-            <Link to="https://selfcare.rmcommunication.com" className="btn btn-primary" style={{ marginTop: '2rem' }}>
+            <Link to="/contact#contact-form" className="btn btn-primary" style={{ marginTop: '2rem' }}>
               Access Self-care Portal <ArrowRight size={16} />
             </Link>
           </div>

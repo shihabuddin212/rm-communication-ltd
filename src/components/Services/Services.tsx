@@ -1,5 +1,6 @@
 import { useInView } from 'react-intersection-observer';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { db, renderIcon } from '../../utils/db';
 import type { ServiceItem } from '../../utils/db';
 import './Services.css';
@@ -30,10 +31,11 @@ export default function Services() {
 
                 <div className="services__grid">
                     {services.map((service, i) => (
-                        <div
+                        <Link
                             key={service.id}
+                            to={`/contact?subject=services-solutions&service=${encodeURIComponent(service.title)}#contact-form`}
                             className={`services__card card ${inView ? 'animate-fade-in-up' : 'pre-animate'}`}
-                            style={{ animationDelay: `${i * 0.08}s` }}
+                            style={{ animationDelay: `${i * 0.08}s`, textDecoration: 'none', color: 'inherit' }}
                         >
                             {service.badge && (
                                 <span className="services__badge">{service.badge}</span>
@@ -48,7 +50,7 @@ export default function Services() {
                                     <path d="M4 10h12M10 4l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
                             </div>
-                        </div>
+                        </Link>
                     ))}
                 </div>
             </div>

@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle } from 'lucide-react';
 import { db } from '../utils/db';
 import type { MessageItem } from '../utils/db';
@@ -8,13 +9,52 @@ import './ContactPage.css';
 const contactInfo = [
   { icon: Phone, label: 'Phone', value: '09639116116 | 01749090930 | 01911223006', href: 'tel:09639116116' },
   { icon: Mail, label: 'Email', value: 'rmcommunicationltd@gmail.com', href: 'mailto:rmcommunicationltd@gmail.com' },
-  { icon: MapPin, label: 'Address', value: '89, 3 Water Works Rd, Lalbagh, Dhaka 1211', href: '#' },
+  { icon: MapPin, label: 'Address', value: '89/3 Water Works Road, Posta area of Lalbagh, Chawkbazar, Dhaka 1211', href: '#' },
   { icon: Clock, label: 'Support Hours', value: '24/7 — Always Available', href: null },
 ];
 
 export default function ContactPage() {
+  const [searchParams] = useSearchParams();
   const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
   const [status, setStatus] = useState<'idle' | 'sending' | 'done'>('idle');
+
+  useEffect(() => {
+    const pkgParam = searchParams.get('package');
+    const subjectParam = searchParams.get('subject');
+    const serviceParam = searchParams.get('service');
+
+    if (pkgParam) {
+      setForm(prev => ({
+        ...prev,
+        subject: 'new-connection',
+        message: `Hello, I would like to subscribe to the "${pkgParam}" package. Please get back to me.`
+      }));
+    } else if (subjectParam) {
+      setForm(prev => ({
+        ...prev,
+        subject: subjectParam,
+        ...(serviceParam ? { message: `Hello, I am interested in your "${serviceParam}" service. Please get back to me.` } : {})
+      }));
+    }
+
+    const checkAndScroll = () => {
+      if (window.location.hash === '#contact-form' || searchParams.has('subject') || searchParams.has('package')) {
+        const el = document.getElementById('contact-form');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
+    };
+
+    checkAndScroll();
+    const t1 = setTimeout(checkAndScroll, 150);
+    const t2 = setTimeout(checkAndScroll, 400);
+
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
+  }, [searchParams, window.location.hash]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -124,6 +164,7 @@ export default function ContactPage() {
                     <select id="subject" name="subject" value={form.subject} onChange={handleChange} required>
                       <option value="">Select subject</option>
                       <option value="new-connection">New Connection</option>
+                      <option value="services-solutions">Service & Solutions</option>
                       <option value="technical-support">Technical Support</option>
                       <option value="billing">Billing Query</option>
                       <option value="corporate">Corporate Package</option>

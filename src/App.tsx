@@ -19,6 +19,7 @@ import ReferralOfferPage from './pages/ReferralOfferPage';
 import AdminPage from './admin/AdminPage';
 import NotFoundPage from './pages/NotFoundPage';
 import ScrollToTop from './components/ScrollToTop';
+import PromoPopup from './components/PromoPopup/PromoPopup';
 import './App.css';
 
 function SiteLayout() {
@@ -46,6 +47,7 @@ function SiteLayout() {
       </main>
       <Footer />
       <ScrollTopBtn />
+      <PromoPopup />
     </>
   );
 }

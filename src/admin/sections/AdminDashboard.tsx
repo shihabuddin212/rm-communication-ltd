@@ -1,7 +1,7 @@
-import { Layers, Tag, FileText, DollarSign, MapPin, ArrowRight, MessageSquare } from 'lucide-react';
+import { Layers, Tag, FileText, DollarSign, MapPin, ArrowRight, MessageSquare, Star } from 'lucide-react';
 import { db } from '../../utils/db';
 
-type Section = 'dashboard' | 'services' | 'offers' | 'articles' | 'pricing' | 'coverage' | 'messages';
+type Section = 'dashboard' | 'services' | 'offers' | 'articles' | 'pricing' | 'coverage' | 'messages' | 'testimonials';
 
 interface AdminDashboardProps {
     onNavigate: (section: Section) => void;
@@ -18,6 +18,7 @@ export default function AdminDashboard({ onNavigate }: AdminDashboardProps) {
         { label: 'Pricing Plans', count: db.getPricingPlans().length, icon: DollarSign, color: '#a78bfa', section: 'pricing' as Section },
         { label: 'Coverage Areas', count: db.getCoverageAreas().length, icon: MapPin, color: '#fb7185', section: 'coverage' as Section },
         { label: 'Messages', count: allMessages.length, icon: MessageSquare, color: '#fbbf24', section: 'messages' as Section, badge: unreadCount > 0 ? `${unreadCount} new` : undefined },
+        { label: 'Customer Reviews', count: db.getTestimonials().length, icon: Star, color: '#38bdf8', section: 'testimonials' as Section },
     ];
 
     const quickLinks = [
@@ -25,7 +26,7 @@ export default function AdminDashboard({ onNavigate }: AdminDashboardProps) {
         { label: 'Post New Article', section: 'articles' as Section, icon: FileText },
         { label: 'Create New Offer', section: 'offers' as Section, icon: Tag },
         { label: 'Add Pricing Plan', section: 'pricing' as Section, icon: DollarSign },
-        { label: 'Manage Coverage', section: 'coverage' as Section, icon: MapPin },
+        { label: 'Manage Customer Say', section: 'testimonials' as Section, icon: Star },
         { label: 'View Messages', section: 'messages' as Section, icon: MessageSquare },
     ];
 

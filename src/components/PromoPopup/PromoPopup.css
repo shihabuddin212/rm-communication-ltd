@@ -1,0 +1,210 @@
+/* ============================================================
+   Promo Popup Banner Styles - RM Communication Ltd
+   ============================================================ */
+
+.promo-popup-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+    animation: promoPopupFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes promoPopupFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.promo-popup-card {
+    background: #ffffff;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 840px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 30px 75px -15px rgba(0, 0, 0, 0.45), 0 0 1px rgba(0, 0, 0, 0.1);
+    animation: promoPopupZoom 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes promoPopupZoom {
+    from {
+        opacity: 0;
+        transform: scale(0.92) translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Close button on top right of image */
+.promo-popup-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #334155;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    transition: all 0.2s ease;
+}
+
+.promo-popup-close:hover {
+    background: #f8fafc;
+    color: #0f172a;
+    transform: scale(1.1);
+}
+
+/* Banner image area */
+.promo-popup-img-wrap {
+    width: 100%;
+    background: #0f172a;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 420px;
+}
+
+.promo-popup-img {
+    width: 100%;
+    height: auto;
+    max-height: 420px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Bottom info & actions bar */
+.promo-popup-body {
+    padding: 1.75rem 2.25rem;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.promo-popup-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    flex: 1;
+}
+
+.promo-popup-badge {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #0088cc;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.promo-popup-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0;
+    line-height: 1.35;
+}
+
+/* Actions */
+.promo-popup-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    flex-shrink: 0;
+}
+
+.promo-popup-btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.5rem;
+    border-radius: 9999px;
+    border: 1.5px solid #0088cc;
+    background: transparent;
+    color: #0088cc;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.promo-popup-btn-outline:hover {
+    background: rgba(0, 136, 204, 0.08);
+    transform: translateY(-1px);
+}
+
+.promo-popup-btn-solid {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.65rem;
+    border-radius: 9999px;
+    border: none;
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(0, 198, 255, 0.35);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.promo-popup-btn-solid:hover {
+    opacity: 0.95;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(0, 198, 255, 0.45);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .promo-popup-body {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.35rem 1.5rem;
+        gap: 1.15rem;
+    }
+
+    .promo-popup-title {
+        font-size: 1.15rem;
+    }
+
+    .promo-popup-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .promo-popup-btn-outline,
+    .promo-popup-btn-solid {
+        flex: 1;
+        padding: 0.6rem 0.95rem;
+        font-size: 0.85rem;
+    }
+}
