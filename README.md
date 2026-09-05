@@ -9,17 +9,7 @@ A modern, responsive web application for **RM Communication Ltd** built with Rea
 - **Live Production Website**: [https://www.rmcommunicationltd.com](https://www.rmcommunicationltd.com)
 - **Live Admin Login Portal**: [https://www.rmcommunicationltd.com/admin](https://www.rmcommunicationltd.com/admin)
 - **GitHub Repository**: [https://github.com/shihabuddin212/rm-communication-ltd](https://github.com/shihabuddin212/rm-communication-ltd)
-- **Ubuntu VPS Server**: `msonline@103.60.205.230`
 
----
-
-## 🔐 Admin Panel Credentials
-
-- **Username / Email**: `admin@rmcommunication.com`
-- **Password**: `rm@admin2026`
-- **Localhost Route**: `/admin` (e.g. `http://localhost:5173/admin`)
-
----
 
 ## 🚀 Local Development Setup
 
