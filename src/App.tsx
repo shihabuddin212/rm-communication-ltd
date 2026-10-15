@@ -16,6 +16,7 @@ import BtrcTariffPage from './pages/BtrcTariffPage';
 import ArticlesPage from './pages/ArticlesPage';
 import OffersPage from './pages/OffersPage';
 import ReferralOfferPage from './pages/ReferralOfferPage';
+import SalesTeamPage from './pages/SalesTeamPage';
 import AdminPage from './admin/AdminPage';
 import NotFoundPage from './pages/NotFoundPage';
 import ScrollToTop from './components/ScrollToTop';
@@ -42,6 +43,7 @@ function SiteLayout() {
           <Route path="/refund" element={<RefundPolicyPage />} />
           <Route path="/tariff" element={<BtrcTariffPage />} />
           <Route path="/articles" element={<ArticlesPage />} />
+          <Route path="/sales-team" element={<SalesTeamPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>

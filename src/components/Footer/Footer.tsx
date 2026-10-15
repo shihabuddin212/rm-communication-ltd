@@ -18,6 +18,7 @@ const footerLinks: Record<string, FooterLink[]> = {
     { label: 'Pricing', path: '/pricing' },
     { label: 'Coverage Area', path: '/coverage' },
     { label: 'Bill Payment', path: '/pay-bill' },
+    { label: 'Sales & Marketing', path: '/sales-team' },
   ],
   support: [
     { label: 'How to Pay', path: '/pay-bill' },

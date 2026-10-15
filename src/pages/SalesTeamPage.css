@@ -1,0 +1,517 @@
+/* ============================================
+   SALES & MARKETING TEAM PAGE
+   Premium Profile Design
+============================================ */
+
+/* pre-animate helper */
+.pre-animate {
+    opacity: 0;
+    transform: translateY(28px);
+}
+
+/* Hero subtitle override */
+.sales-team__hero-sub {
+    max-width: 700px;
+}
+
+/* ── Intro Card ── */
+.sales-team__intro {
+    padding-top: 0;
+}
+
+.sales-team__intro-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 2.5rem;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-card);
+}
+
+.sales-team__intro-icon {
+    flex-shrink: 0;
+    width: 56px;
+    height: 56px;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(0, 114, 255, 0.35);
+}
+
+.sales-team__intro-text {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+}
+
+/* ── Section ── */
+.sales-team__section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+/* ── Profile Card ── */
+.sales-team__card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    transition: box-shadow var(--transition-normal), border-color var(--transition-normal);
+    position: relative;
+}
+
+.sales-team__card:hover {
+    border-color: var(--color-border-hover);
+    box-shadow: var(--shadow-card-hover);
+}
+
+/* Decorative gradient top-left corner */
+.sales-team__card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 240px;
+    height: 240px;
+    background: radial-gradient(circle at top left, rgba(0, 198, 255, 0.09), transparent 70%);
+    pointer-events: none;
+}
+
+/* ── Role Badge ── */
+.sales-team__role-badge {
+    background: var(--gradient-primary);
+    padding: 0.55rem 1.75rem;
+    display: inline-flex;
+}
+
+.sales-team__role-badge--teal {
+    background: linear-gradient(135deg, #00c6a0 0%, #0072ff 100%);
+}
+
+.sales-team__role-label {
+    font-family: var(--font-primary);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    color: #fff;
+}
+
+/* ── Card Body ── */
+.sales-team__card-body {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 3rem;
+    padding: 2.5rem 3rem;
+}
+
+/* ── Photo Column ── */
+.sales-team__photo-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.sales-team__photo-wrap {
+    position: relative;
+    width: 220px;
+    height: 270px;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    flex-shrink: 0;
+    background: #f0f4f8;
+    box-shadow: var(--shadow-card);
+}
+
+.sales-team__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    transition: transform var(--transition-slow);
+}
+
+/* Ashraful's passport photo — show full frame cleanly */
+.sales-team__photo--portrait {
+    object-fit: contain;
+    object-position: center;
+    background: #ffffff;
+}
+
+.sales-team__card:hover .sales-team__photo {
+    transform: scale(1.03);
+}
+
+.sales-team__photo-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 2px rgba(0, 198, 255, 0.35);
+    pointer-events: none;
+}
+
+.sales-team__photo-glow--teal {
+    box-shadow: inset 0 0 0 2px rgba(0, 198, 160, 0.4);
+}
+
+.sales-team__avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(160deg, #0d1f42 0%, #040b1a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.sales-team__avatar-placeholder::before {
+    content: '';
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: rgba(0, 198, 255, 0.08);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+}
+
+.sales-team__avatar-initials {
+    font-family: var(--font-primary);
+    font-size: 3.5rem;
+    font-weight: 800;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 0.05em;
+}
+
+.sales-team__photo-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-accent-green);
+    background: rgba(0, 230, 118, 0.1);
+    border: 1px solid rgba(0, 230, 118, 0.25);
+    border-radius: var(--radius-full);
+    padding: 0.3rem 0.9rem;
+}
+
+/* ── Content Column ── */
+.sales-team__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.sales-team__name {
+    font-family: var(--font-primary);
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    font-weight: 800;
+    color: var(--color-text-white);
+    line-height: 1.2;
+}
+
+.sales-team__title-role {
+    font-size: 1rem;
+    font-weight: 600;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.sales-team__company {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    letter-spacing: 0.02em;
+}
+
+.sales-team__tagline {
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--color-text-secondary);
+    border-left: 3px solid var(--color-accent-primary);
+    padding-left: 1rem;
+    margin-top: 0.25rem;
+}
+
+.sales-team__bio {
+    font-size: 0.93rem;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+}
+
+/* ── Expertise ── */
+.sales-team__expertise {
+    margin-top: 0.5rem;
+}
+
+.sales-team__expertise-title {
+    font-family: var(--font-primary);
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--color-text-white);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.75rem;
+}
+
+.sales-team__expertise-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.45rem 1.5rem;
+}
+
+.sales-team__expertise-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.4rem;
+    font-size: 0.855rem;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+}
+
+.sales-team__expertise-list li svg {
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+    color: var(--color-accent-primary);
+}
+
+/* ── Contact ── */
+.sales-team__contacts {
+    margin-top: 0.75rem;
+    padding: 1.5rem;
+    background: rgba(0, 198, 255, 0.04);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+}
+
+.sales-team__contacts-title {
+    font-family: var(--font-primary);
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--color-text-white);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+}
+
+.sales-team__contact-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.sales-team__contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.65rem 1rem;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.sales-team__contact-item:hover {
+    border-color: var(--color-border-hover);
+    background: var(--color-bg-card-hover);
+}
+
+.sales-team__contact-item--pending {
+    opacity: 0.65;
+}
+
+.sales-team__contact-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #fff;
+}
+
+.sales-team__contact-icon--phone {
+    background: linear-gradient(135deg, #0072ff, #00c6ff);
+}
+
+.sales-team__contact-icon--wa {
+    background: linear-gradient(135deg, #25d366, #128c7e);
+}
+
+.sales-team__contact-icon--email {
+    background: linear-gradient(135deg, #ff6b35, #e91e63);
+}
+
+.sales-team__contact-data {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.sales-team__contact-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-text-muted);
+}
+
+.sales-team__contact-value {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    transition: color var(--transition-fast);
+}
+
+a.sales-team__contact-value:hover {
+    color: var(--color-accent-primary);
+}
+
+.sales-team__contact-value--muted {
+    color: var(--color-text-muted);
+    font-style: italic;
+}
+
+/* Copy button */
+.sales-team__copy-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.3rem 0.75rem;
+    background: rgba(0, 198, 255, 0.1);
+    border: 1px solid var(--color-border-hover);
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-accent-primary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    flex-shrink: 0;
+    font-family: inherit;
+}
+
+.sales-team__copy-btn:hover {
+    background: rgba(0, 198, 255, 0.18);
+    transform: translateY(-1px);
+}
+
+/* WhatsApp chat button */
+.sales-team__chat-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3rem 0.85rem;
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+    transition: all var(--transition-fast);
+}
+
+.sales-team__chat-btn:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+}
+
+/* ── Divider ── */
+.sales-team__divider {
+    padding: 0;
+}
+
+.sales-team__divider-line {
+    height: 1px;
+    background: var(--gradient-card-border);
+    opacity: 0.6;
+}
+
+/* ============================================
+   RESPONSIVE
+============================================ */
+@media (max-width: 1024px) {
+    .sales-team__card-body {
+        grid-template-columns: 220px 1fr;
+        gap: 2rem;
+        padding: 2rem 2rem;
+    }
+
+    .sales-team__photo-wrap {
+        width: 190px;
+        height: 235px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sales-team__intro-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 1.75rem 1.5rem;
+    }
+
+    .sales-team__card-body {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+        padding: 1.75rem 1.25rem;
+    }
+
+    .sales-team__photo-col {
+        align-items: center;
+    }
+
+    .sales-team__photo-wrap {
+        width: 180px;
+        height: 220px;
+    }
+
+    .sales-team__expertise-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .sales-team__card-body {
+        padding: 1.25rem 1rem;
+    }
+
+    .sales-team__contacts {
+        padding: 1rem;
+    }
+}
+
+/* ── Light theme overrides ── */
+html[data-theme='light'] .sales-team__intro-card,
+html[data-theme='light'] .sales-team__card,
+html[data-theme='light'] .sales-team__contact-item,
+html[data-theme='light'] .sales-team__contacts {
+    background: rgba(255, 255, 255, 0.82);
+}
+
+html[data-theme='light'] .sales-team__contacts {
+    background: rgba(0, 114, 255, 0.04);
+}
+
+html[data-theme='light'] .sales-team__contact-item:hover {
+    background: rgba(255, 255, 255, 0.95);
+}

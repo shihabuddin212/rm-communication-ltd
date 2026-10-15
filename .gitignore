@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Root-level raw source images (public/ copies are tracked instead)
+/Asraful.jpeg
+/Demo_shamblic_man_Pic.webp
